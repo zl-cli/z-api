@@ -15,6 +15,11 @@ pub trait ZApi {
     #[Get("/eapi/user/profile")]
     fn get_profile(&self) -> Result<Value>;
 
+
+    /*
+     * Book Get Api
+     */
+
     #[Get("/eapi/book/recently")]
     fn get_book_recently(&self) -> Result<Vec<Book>>;
 
@@ -27,5 +32,10 @@ pub trait ZApi {
     #[Get("/eapi/book/{id}/{hash}/send-to-{device}")]
     fn send_book_to_device(&self, id: i32, hash: i32, device:String) -> Result<()>;
 
+    #[Get("/eapi/book/{id}/{hash}")]
+    fn get_book(&self, id: i32, hash: i32, switch_language: String) -> Result<Book>;
+
+    #[Get("/eapi/book/{id}/{hash}/similar")]
+    fn get_similar_books(&self, id: i32, hash: i32) -> Result<Vec<Book>>;
     
 }
