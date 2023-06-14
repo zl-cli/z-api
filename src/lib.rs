@@ -10,22 +10,22 @@ use model::*;
 #[Api]
 pub trait ZApi {
     #[Post("/eapi/user/login")]
-    fn login(&self, email: String, password: String) -> Result<Value>;
+    pub fn login(&self, email: String, password: String) -> Result<Value>;
 
     #[Get("/eapi/user/profile")]
-    fn get_profile(&self) -> Result<Value>;
+    pub fn get_profile(&self) -> Result<Value>;
 
     #[Get("/eapi/book/recently")]
-    fn get_book_recently(&self) -> Result<Vec<Book>>;
+    pub fn get_book_recently(&self) -> Result<Vec<Book>>;
 
     #[Get("/eapi/book/recommended")]
-    fn get_book_recommended(&self) -> Result<Vec<Book>>;
+    pub fn get_book_recommended(&self) -> Result<Vec<Book>>;
 
     #[Get("/eapi/book/most-popular")]
-    fn get_book_most_popular(&self, switch_language: String) -> Result<Vec<Book>>;
+    pub fn get_book_most_popular(&self, switch_language: String) -> Result<Vec<Book>>;
 
     #[Get("/eapi/book/{id}/{hash}/send-to-{type}")]
-    fn send_book_to_device(&self, id: i32, hash: i32, device:String) -> Result<()>;
+    pub fn send_book_to_device(&self, id: i32, hash: i32, device:String) -> Result<()>;
 
     
 }
