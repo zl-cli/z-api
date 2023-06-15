@@ -21,6 +21,7 @@ use serde_json::Value;
 //         "lib-bxtnqoxeg7dxe37xluhzbydh.yeah.pw"
 //     ]
 // }
+#[allow(non_snake_case)]
 #[derive(Debug, Serialize, Deserialize)]
 pub struct User {
     id: i32,
@@ -34,7 +35,7 @@ pub struct User {
     downloads_limit: i32,
     confirmed: i32,
     isPremium: i32,
-    personalDomains: Vec<String>
+    personalDomains: Vec<String>,
 }
 
 // example:
@@ -51,23 +52,37 @@ pub struct Book {
     title: String,
     author: String,
     cover: String, // url
-    hash: String
+    hash: String,
 }
-
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Info {
-    books:i32,
+    books: i32,
     articles: i32,
     plans: Value,
-    languages: HashMap<String,String>,
+    languages: HashMap<String, String>,
     extensions: Vec<String>,
-    banner:String,
-    service: HashMap<String,String>,
+    banner: String,
+    service: HashMap<String, String>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Format {}
+
+#[allow(non_snake_case)]
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Domain {
+    domain: String,
+    contentAvailable: bool,
+    premium: bool,
+    isRedirector: bool,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DoaminList {
+    success: i32,
+    domains: Vec<Domain>,
+}
 
 // I don't know if is nesseary
 //
