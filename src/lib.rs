@@ -30,13 +30,14 @@ pub trait ZApi {
     #[Get("/eapi/book/recently")]
     fn get_book_recently(&self) -> Result<Vec<Book>>;
 
-    #[Get("/eapi/book/most-popular?switch_language={switch_language}")]
+    // language: zh us
+    #[Get("/eapi/book/most-popular?switchLanguage={switch_language}")]
     fn get_book_most_popular(&self, switch_language: String) -> Result<Vec<Book>>;
 
     #[Get("/eapi/book/{id}/{hash}/send-to-{device}")]
     fn send_book_to_device(&self, id: i32, hash: i32, device: String) -> Result<()>;
 
-    #[Get("/eapi/book/{id}/{hash}?switch_language={switch_language}")]
+    #[Get("/eapi/book/{id}/{hash}?switchLanguage={switch_language}")]
     fn get_book(&self, id: i32, hash: i32, switch_language:String) -> Result<Book>;
 
     #[Get("/eapi/book/{id}/{hash}/similar")]
@@ -67,4 +68,6 @@ pub trait ZApi {
      */
     #[Get("/eapi/info/domains")]
     fn get_domains(&self) -> Result<DoaminList>;
+
+
 }
