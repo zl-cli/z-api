@@ -89,5 +89,6 @@ pub trait ZApi {
      */
     #[Get("/eapi/info/domains")]
     fn get_domains(&self) -> Result<DoaminList>;
+
     
 }
