@@ -1,5 +1,4 @@
 use serde_json::{Result, Value};
-use std::time::Instant;
 use z_api_def::{Api, Get, Post};
 
 pub mod model;
@@ -7,6 +6,7 @@ pub mod model;
 use model::*;
 
 /// The api definitions.
+#[allow(non_snake_case, dead_code)]
 #[Api]
 pub trait ZApi {
     /*
@@ -31,13 +31,13 @@ pub trait ZApi {
     fn get_book_recently(&self) -> Result<Vec<Book>>;
 
     #[Get("/eapi/book/most-popular")]
-    fn get_book_most_popular(&self, switch_language: String) -> Result<Vec<Book>>;
+    fn get_book_most_popular(&self /* switch_language: String */) -> Result<Vec<Book>>;
 
     #[Get("/eapi/book/{id}/{hash}/send-to-{device}")]
     fn send_book_to_device(&self, id: i32, hash: i32, device: String) -> Result<()>;
 
     #[Get("/eapi/book/{id}/{hash}")]
-    fn get_book(&self, id: i32, hash: i32, switch_language: String) -> Result<Book>;
+    fn get_book(&self, id: i32, hash: i32 /* switch_language: String */) -> Result<Book>;
 
     #[Get("/eapi/book/{id}/{hash}/similar")]
     fn get_similar_books(&self, id: i32, hash: i32) -> Result<Vec<Book>>;
@@ -48,6 +48,7 @@ pub trait ZApi {
     /*
      * Book Post Api
      */
+    #[allow(non_snake_case)]
     #[Post("/eapi/book/search")]
     fn search_books(
         &self,
@@ -60,4 +61,10 @@ pub trait ZApi {
         page: i32,
         limit: i32,
     ) -> Result<Vec<Book>>;
+
+    /*
+     * Info Get Apis
+     */
+    #[Get("/eapi/info/domains")]
+    fn get_domains(&self) -> Result<DoaminList>;
 }
