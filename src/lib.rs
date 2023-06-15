@@ -15,6 +15,27 @@ pub trait ZApi {
     #[Post("/eapi/user/login")]
     fn login(&self, email: String, password: String) -> Result<Value>;
 
+    #[Post("/eapi/user/update")]
+    fn user_update(
+        &self,
+        email: String,
+        password: String,
+        name: String,
+        kindle_email: String,
+    ) -> Result<()>;
+
+    #[Post("/eapi/user/token-sign-in")]
+    fn token_sign_in(&self, id: i32, remix_userkey: String) -> Result<()>;
+
+    #[Post("/eapi/user/email/confirmation/resend")]
+    fn resend_confirmation_email(&self) -> Result<()>;
+
+    #[Post("/eapi/user/registeration")]
+    fn registeration(&self, email: String, password: String, name: String) -> Result<()>;
+
+    #[Post("/eapi/user/password-recovery")]
+    fn password_recovery(&self, email: String) -> Result<()>;
+
     /*
      * User Get Api
      */
@@ -38,7 +59,7 @@ pub trait ZApi {
     fn send_book_to_device(&self, id: i32, hash: i32, device: String) -> Result<()>;
 
     #[Get("/eapi/book/{id}/{hash}?switchLanguage={switch_language}")]
-    fn get_book(&self, id: i32, hash: i32, switch_language:String) -> Result<Book>;
+    fn get_book(&self, id: i32, hash: i32, switch_language: String) -> Result<Book>;
 
     #[Get("/eapi/book/{id}/{hash}/similar")]
     fn get_similar_books(&self, id: i32, hash: i32) -> Result<Vec<Book>>;
@@ -68,6 +89,4 @@ pub trait ZApi {
      */
     #[Get("/eapi/info/domains")]
     fn get_domains(&self) -> Result<DoaminList>;
-
-
 }
