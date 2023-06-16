@@ -31,7 +31,7 @@ pub trait ZApi {
     fn resend_confirmation_email(&self) -> Result<()>;
 
     #[Post("/eapi/user/registeration")]
-    fn registeration(&self, email: String, password: String, name: String) -> Result<()>;
+    fn registration(&self, email: String, password: String, name: String) -> Result<()>;
 
     #[Post("/eapi/user/password-recovery")]
     fn password_recovery(&self, email: String) -> Result<()>;
