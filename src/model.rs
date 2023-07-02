@@ -84,6 +84,12 @@ pub struct DoaminList {
     domains: Vec<Domain>,
 }
 
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Extensions {
+    success: i32,
+    extensions: Vec<String>
+}
+
 // I don't know if is nesseary
 //
 // #[derive(Debug, Serialize, Deserialize)]

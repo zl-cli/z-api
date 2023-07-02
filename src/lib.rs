@@ -90,4 +90,7 @@ pub trait ZApi {
     #[Get("/eapi/info/domains")]
     fn get_domains(&self) -> Result<DoaminList>;
 
+    #[Get("/eapi/info/extensions")]
+    fn get_extensions(&self) -> Result<Extensions>;
+
 }
